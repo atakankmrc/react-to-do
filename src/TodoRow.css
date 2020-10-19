@@ -1,0 +1,16 @@
+.row {
+  width: 100%;
+}
+
+.row__text {
+  border-left: 6px solid red;
+  background-color: #4dd2ff;
+  color: black;
+  /* font-weight: 500; */
+  padding-left: 10px;
+  /* padding-top: 5px; */
+  margin-top: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-family: "Times New Roman", Times, serif;
+}
