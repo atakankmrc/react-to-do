@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Todo.css";
-import TodoRow from "./TodoRow";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const Todo = () => {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(["Delete This"]);
 
   function handleChange(e) {
     setText(e.target.value);
@@ -15,6 +16,12 @@ const Todo = () => {
     setTodos([...todos, text]);
     setText("");
   }
+
+  const handleDelete = (index) => {
+    const term = [...todos];
+    term.splice(index, 1);
+    setTodos(term);
+  };
 
   return (
     <div className="todo">
@@ -33,7 +40,16 @@ const Todo = () => {
       </div>
 
       {todos.map((todo, index) => (
-        <TodoRow text={todo} key={index} />
+        <div className="row" key={index}>
+          <h1 className="row__text">{todo}</h1>
+          <IconButton
+            aria-label="delete"
+            className="row__delete"
+            onClick={() => handleDelete(index)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </div>
       ))}
     </div>
   );
